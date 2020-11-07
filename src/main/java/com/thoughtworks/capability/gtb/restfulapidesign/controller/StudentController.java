@@ -1,6 +1,7 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.controller;
 
 import com.thoughtworks.capability.gtb.restfulapidesign.model.Gender;
+import com.thoughtworks.capability.gtb.restfulapidesign.model.Group;
 import com.thoughtworks.capability.gtb.restfulapidesign.model.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.model.StudentRequestInfo;
 import com.thoughtworks.capability.gtb.restfulapidesign.service.StudentService;
@@ -48,5 +49,20 @@ public class StudentController {
     @DeleteMapping(value = "/{id}")
     public void deleteStudent(@PathVariable Integer id) {
         studentService.deleteStudent(id);
+    }
+
+    @GetMapping(value = "/groups")
+    public List<Group> getAllGroupsStudents() {
+        return studentService.getAllGroupsStudents();
+    }
+
+    @GetMapping(value = "/groups/{groupId}")
+    public List<Group> getGroupInfoByGroupId(@PathVariable Integer groupId) {
+        return studentService.getGroupInfoByGroupId(groupId);
+    }
+
+    @GetMapping(value = "/group-students")
+    public List<Group> getGroupStudents() {
+        return studentService.shuffleStudents();
     }
 }
