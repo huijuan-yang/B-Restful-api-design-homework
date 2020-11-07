@@ -50,4 +50,8 @@ public class StudentService {
         return studentMap.values().stream().filter(student ->
                 student.getId() == id).collect(Collectors.toList());
     }
+
+    public void updateStudentInfo(Integer id, Student student) {
+        studentMap.put(id, student);
+    }
 }
