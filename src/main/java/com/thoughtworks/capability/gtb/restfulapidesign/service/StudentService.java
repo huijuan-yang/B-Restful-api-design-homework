@@ -42,15 +42,12 @@ public class StudentService {
     }
 
     public List<Student> getStudentsByGender(Gender gender) {
-//        List<Student> studentsListByGender = new ArrayList<>();
-//        for (Student student : studentMap.values()) {
-//            if (student.getGender() == gender) {
-//                studentsListByGender.add(student);
-//            }
-//        }
-//
-//        return studentsListByGender;
         return studentMap.values().stream().filter(student ->
                 student.getGender() == gender).collect(Collectors.toList());
+    }
+
+    public List<Student> getStudentInfoById(Integer id) {
+        return studentMap.values().stream().filter(student ->
+                student.getId() == id).collect(Collectors.toList());
     }
 }
