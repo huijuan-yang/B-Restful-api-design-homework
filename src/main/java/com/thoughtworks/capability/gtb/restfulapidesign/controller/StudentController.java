@@ -1,5 +1,6 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.controller;
 
+import com.thoughtworks.capability.gtb.restfulapidesign.model.Gender;
 import com.thoughtworks.capability.gtb.restfulapidesign.model.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.model.StudentRequestInfo;
 import com.thoughtworks.capability.gtb.restfulapidesign.service.StudentService;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/students")
 public class StudentController {
 
     private final StudentService studentService;
@@ -17,18 +19,23 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping(value = "/students")
+    @GetMapping(value = "/")
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
 
-    @PostMapping(value = "/students")
+    @GetMapping
+    public List<Student> getStudentsByGender(@RequestParam(value = "gender") Gender gender) {
+        return studentService.getStudentsByGender(gender);
+    }
+
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void addStudent(@RequestBody StudentRequestInfo studentRequestInfo) {
         studentService.addStudent(studentRequestInfo);
     }
 
-    @DeleteMapping(value = "/students/{id}")
+    @DeleteMapping(value = "/{id}")
     public void deleteStudent(@PathVariable Integer id) {
         studentService.deleteStudent(id);
     }
