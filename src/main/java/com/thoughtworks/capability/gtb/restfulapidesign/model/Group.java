@@ -15,4 +15,5 @@ public class Group {
     private String groupName;
     private String groupNote;
     private List<Student> groupStudents;
+
 }

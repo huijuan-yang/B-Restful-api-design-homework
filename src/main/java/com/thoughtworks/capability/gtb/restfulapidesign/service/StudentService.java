@@ -84,4 +84,10 @@ public class StudentService {
         }
         return getAllGroupsStudents();
     }
+
+    public void updateGroupName(Integer groupId, String groupName) {
+        Group group = groupMap.get(groupId);
+        group.setGroupName(groupName);
+        groupMap.put(groupId, group);
+    }
 }

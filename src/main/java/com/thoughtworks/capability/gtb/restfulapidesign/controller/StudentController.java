@@ -65,4 +65,9 @@ public class StudentController {
     public List<Group> getGroupStudents() {
         return studentService.shuffleStudents();
     }
+
+    @PutMapping(value = "/groups/{groupId}")
+    public void updateGroupName(@PathVariable Integer groupId, @RequestBody String groupName) {
+        studentService.updateGroupName(groupId, groupName);
+    }
 }
